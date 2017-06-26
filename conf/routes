@@ -1,0 +1,36 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Index
+GET     /                          controllers.HomeController.index
+# API documentation
+GET     /documentation             controllers.Assets.at(path="/public", file = "html/documentation.html")
+# User resource
+POST    /users                     controllers.VotersController.createUser()
+POST	/users/token               controllers.VotersController.authenticate()
+DELETE  /users/token               controllers.VotersController.logout()
+GET     /users/me                  controllers.VotersController.fetchUserSelf()
+PATCH   /users/me                  controllers.VotersController.updateUserSelf()
+GET     /users/:id                 controllers.VotersController.fetchUser(id:String)
+PATCH   /users/:id                 controllers.VotersController.updateUser(id:String)
+# Poll resource
+POST    /polls                     controllers.PollsController.createPoll()
+GET     /polls/public              controllers.PollsController.fetchPollsPublic(page:Int, size:Int)
+GET     /polls/private             controllers.PollsController.fetchPollsPrivate(page:Int, size:Int)
+GET     /polls/created             controllers.PollsController.fetchPollsCreated(page:Int, size:Int)
+GET     /polls/:id                 controllers.PollsController.fetchPoll(id:String)
+# Participation resource
+POST    /participations            controllers.ParticipationsController.createParticipation()
+GET     /participations/:id        controllers.ParticipationsController.fetchParticipation(id:String)
+DELETE  /participations/:id        controllers.ParticipationsController.deleteParticipation(id:String)
+# Voter resource
+POST    /votes                     controllers.VotesController.createVote()
+GET     /votes/:id                 controllers.VotesController.fetchVote(id:String)
+
+# An example controller showing how to use dependency injection
+GET     /count                     controllers.CountController.count
+# An example controller showing how to write asynchronous code
+GET     /message                   controllers.AsyncController.message
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file              controllers.Assets.versioned(path="/public", file:Asset)

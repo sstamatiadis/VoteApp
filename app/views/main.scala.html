@@ -1,0 +1,24 @@
+@*
+ * This template is called from the `index` template. This template
+ * handles the rendering of the page header and body tags. It takes
+ * two arguments, a `String` for the title of the page and an `Html`
+ * object to insert into the body of the page.
+ *@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @* Here's where we render the page title `String`. *@
+        <title>@title</title>
+		<link rel="shortcut icon" mode="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+		<script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
+		<script mode="text/javascript" src="@routes.Assets.versioned("bootstrap-3.3.6-dist/js/bootstrap.js")"></script>
+		<link rel="stylesheet" href="@routes.Assets.versioned("bootstrap-3.3.6-dist/css/bootstrap.css")">
+    </head>
+    <body>
+        @* And here's where we render the `Html` object containing
+         * the page content. *@
+        @content
+    </body>
+</html>
